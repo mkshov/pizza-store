@@ -14,12 +14,22 @@ export default function AddForm({ createPizza }) {
       info,
       price,
     };
-    createPizza(onePizza);
+    if (url.trim() && title.trim() && info.trim() && price.trim()) {
+      createPizza(onePizza);
+      alert("Продукт добавлен!");
+      setUrl("");
+      setTitle("");
+      setInfo("");
+      setPrice("");
+    } else {
+      alert("Заполните все поля!");
+    }
   };
 
   return (
     <div className="form">
       <form>
+        <h1>Форма добавления</h1>
         <input onChange={(e) => setUrl(e.target.value)} value={url} type="text" placeholder="Вставьте ссылку..." />
         <input onChange={(e) => setTitle(e.target.value)} value={title} type="text" placeholder="Вставьте название" />
         <input onChange={(e) => setInfo(e.target.value)} value={info} type="text" placeholder="Вставьте описание..." />

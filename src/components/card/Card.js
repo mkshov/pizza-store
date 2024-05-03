@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import pizzaImg from "../../images/image 7.png";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
+import { useNavigate } from "react-router-dom";
 
-export default function Card() {
+export default function Card({ product }) {
+  const navigate = useNavigate();
   const [testo, setTesto] = useState("тонкое");
   const [size, setSize] = useState(25);
+
   return (
     <div className="card">
-      <img src={pizzaImg} alt="Сырная пицца" />
-      <p>Сырная</p>
+      <img onClick={() => navigate(`/details/${product.id}`)} src={product.url} alt={product.title} />
+      <p>{product.title}</p>
       <div className="card-select">
         <div className="card-select-inner">
           <button onClick={() => setTesto("тонкое")} className={testo === "тонкое" ? "btn-active" : null}>
@@ -31,7 +34,7 @@ export default function Card() {
         </div>
       </div>
       <div className="card-end">
-        <p>550 сом</p>
+        <p>{product.price}cом</p>
         <button>
           <AddOutlinedIcon sx={{ color: "white" }} />
           Добавить
