@@ -2,10 +2,24 @@
   "pizzas": [
     {
       "id": "40ea",
-      "url": "sdf",
-      "title": "sdf",
-      "info": "sdf",
+      "url": "https://media.dodostatic.net/image/r:584x584/11EEF62E524C7681899886131CF3354C.avif",
+      "title": "Сырная с мясом",
+      "info": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Est, reiciendis!",
       "price": "sdf"
+    },
+    {
+      "id": "d4ff",
+      "url": "https://media.dodostatic.net/image/r:584x584/11EE7D60109D7D49BF0AC5BCAD0F9679.avif",
+      "title": "Сырная",
+      "info": "Ууу",
+      "price": "650"
+    },
+    {
+      "id": "3a53",
+      "url": "https://media.dodostatic.net/image/r:584x584/11EE7D600BC7B9F1B6888AF021E5C198.avif",
+      "title": "Сырная пицца",
+      "info": "Тонкое тесто, 40см",
+      "price": "550"
     }
   ]
 }
