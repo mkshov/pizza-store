@@ -5,21 +5,35 @@
       "url": "https://media.dodostatic.net/image/r:584x584/11EEF62E524C7681899886131CF3354C.avif",
       "title": "Сырная с мясом",
       "info": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Est, reiciendis!",
-      "price": "sdf"
+      "price": 110
     },
     {
       "id": "d4ff",
       "url": "https://media.dodostatic.net/image/r:584x584/11EE7D60109D7D49BF0AC5BCAD0F9679.avif",
       "title": "Сырная",
       "info": "Ууу",
-      "price": "650"
+      "price": 200
     },
     {
       "id": "3a53",
       "url": "https://media.dodostatic.net/image/r:584x584/11EE7D600BC7B9F1B6888AF021E5C198.avif",
       "title": "Сырная пицца",
       "info": "Тонкое тесто, 40см",
-      "price": "550"
+      "price": 100
+    },
+    {
+      "id": "c72e",
+      "url": "https://media.dodostatic.net/image/r:233x233/11EE7D60177073018C580C07B2F34917.avif",
+      "title": "Pesto",
+      "info": "lol 1234",
+      "price": 1000
+    },
+    {
+      "url": "https://media.dodostatic.net/image/r:233x233/11EE7D6013454CD6BE264FC142D1BD35.avif",
+      "title": "Аррива!",
+      "info": "Цыпленок, колбаски чоризо из цыпленка, моцарелла, сладкий перец, красный лук, томаты, чеснок сухой, соус ранч, бургер соус",
+      "price": 450,
+      "id": "ERrS5Cj"
     }
   ]
 }

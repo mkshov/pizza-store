@@ -12,7 +12,7 @@ export default function AddForm({ createPizza }) {
       url,
       title,
       info,
-      price,
+      price: +price,
     };
     if (url.trim() && title.trim() && info.trim() && price.trim()) {
       createPizza(onePizza);
@@ -33,7 +33,7 @@ export default function AddForm({ createPizza }) {
         <input onChange={(e) => setUrl(e.target.value)} value={url} type="text" placeholder="Вставьте ссылку..." />
         <input onChange={(e) => setTitle(e.target.value)} value={title} type="text" placeholder="Вставьте название" />
         <input onChange={(e) => setInfo(e.target.value)} value={info} type="text" placeholder="Вставьте описание..." />
-        <input onChange={(e) => setPrice(e.target.value)} value={price} type="text" placeholder="Цена..." />
+        <input onChange={(e) => setPrice(e.target.value)} value={price} type="number" placeholder="Цена..." />
         <button onClick={(e) => handleClick(e)}>Добавить пиццу</button>
       </form>
     </div>

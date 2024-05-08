@@ -3,12 +3,17 @@ import React, { useEffect } from "react";
 import { Box, Button, Typography } from "@mui/material";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
-import pizza from "../../images/image 7.png";
+import Product from "./Product";
+import KeyboardDoubleArrowLeftIcon from "@mui/icons-material/KeyboardDoubleArrowLeft";
+import { Link } from "react-router-dom";
 
-export default function Cart({ getCart, cart }) {
+export default function Cart({ getCart, cart, deleteCart }) {
   useEffect(() => {
     getCart();
   }, []);
+
+  const totalPrice = cart.reduce((sum, product) => sum + product.totalPrice, 0);
+
   return (
     <div>
       <Box className="cart">
@@ -18,34 +23,34 @@ export default function Cart({ getCart, cart }) {
             Корзина
           </Typography>
 
-          <Button variant="contained">
+          <Button onClick={deleteCart} variant="contained">
             <DeleteOutlinedIcon />
             Очистить корзину
           </Button>
         </Box>
         <Box className="cart-body">
           {cart.map((product) => (
-            <Box className="cart-product">
-              <Box className="cart-product__info">
-                <img src={pizza} alt="pizza" />
-                <Box>
-                  <Typography>Сырный цыпленок</Typography>
-                  <Typography>Lorem ipsum dolor sit amet.</Typography>
-                </Box>
-              </Box>
-              <Box className="cart-product__quant">
-                <button>-</button>
-                <p>2</p>
-                <button>+</button>
-              </Box>
-
-              <Typography>3000 сом</Typography>
-
-              <Button>
-                <DeleteOutlinedIcon />
-              </Button>
-            </Box>
+            <Product cart={cart} getCart={getCart} key={product.id} product={product} />
           ))}
+        </Box>
+        <Box className="cart-footer">
+          <Box className="cart-footer__inner">
+            <Typography>
+              Всего пицц: <span>{cart.length} шт.</span>
+            </Typography>
+            <Link style={{ textDecoration: "none" }} to="/">
+              <button className="outlined-btn">
+                <KeyboardDoubleArrowLeftIcon className="arrow-left" />
+                Вернуться назад
+              </button>
+            </Link>
+          </Box>
+          <Box className="cart-footer__inner">
+            <Typography>
+              Сумма заказа: <span>{totalPrice} сом</span>
+            </Typography>
+            <button className="contained-btn">Оплатить сейчас</button>
+          </Box>
         </Box>
       </Box>
     </div>

@@ -7,6 +7,7 @@ import axios from "axios";
 import Details from "./pages/details/Details";
 import EditForm from "./pages/editForm/EditForm";
 import Cart from "./pages/cart/Cart";
+import Searched from "./pages/searched/Searched";
 
 export default function App() {
   const API = "http://localhost:8000/pizzas";
@@ -21,8 +22,9 @@ export default function App() {
   }
 
   // ! read
-  async function getPizzas() {
-    let result = await axios.get(API);
+  async function getPizzas(search = "") {
+    console.log("search: ", search);
+    let result = await axios.get(`${API}?title_like=${search}`);
     setPizzas(result.data);
   }
 
@@ -46,15 +48,15 @@ export default function App() {
   // ! to Local Storage
   function toLocalStorage(sentProduct) {
     let from = JSON.parse(localStorage.getItem("cart")) || [];
-    let isInCart = from.some((item) => item.id == sentProduct.id);
+    let isInCart = from.some((item) => item.id === sentProduct.id);
 
     if (isInCart) {
       alert(`В корзине уже есть ${sentProduct.title}. Увеличить кол-во можно в корзине.`);
       return;
     }
-
     let to = [...from, sentProduct];
     localStorage.setItem("cart", JSON.stringify(to));
+    getCart();
   }
 
   function getCart() {
@@ -62,9 +64,18 @@ export default function App() {
     setCart(from);
   }
 
+  function deleteCart() {
+    localStorage.removeItem("cart");
+    getCart();
+  }
+
+  useEffect(() => {
+    getCart();
+  }, []);
+
   return (
     <BrowserRouter>
-      <Header />
+      <Header getPizzas={getPizzas} cart={cart} />
       <Routes>
         <Route path="/" element={<HomePage pizzas={pizzas} getPizzas={getPizzas} />} />
         <Route path="/add-form" element={<AddForm createPizza={createPizza} />} />
@@ -81,7 +92,8 @@ export default function App() {
           }
         />
         <Route path="/edit-form/:id" element={<EditForm oneProduct={oneProduct} getOneProduct={getOneProduct} updateProduct={updateProduct} />} />
-        <Route path="cart" element={<Cart getCart={getCart} cart={cart} />} />
+        <Route path="cart" element={<Cart deleteCart={deleteCart} getCart={getCart} cart={cart} />} />
+        <Route path="searched" element={<Searched getPizzas={getPizzas} pizzas={pizzas} />} />
       </Routes>
     </BrowserRouter>
   );

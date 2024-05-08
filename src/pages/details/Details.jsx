@@ -23,7 +23,11 @@ export default function Details({ deletePizza, getPizzas, getOneProduct, oneProd
           <Typography>{oneProduct?.title}</Typography>
           <Typography>{oneProduct?.info}</Typography>
           <Typography>{oneProduct?.price}</Typography>
-          <Button variant="contained" onClick={() => toLocalStorage(oneProduct)} sx={{ background: "#FE5F1E", color: "white" }}>
+          <Button
+            variant="contained"
+            onClick={() => toLocalStorage({ ...oneProduct, quantity: 1, totalPrice: oneProduct.price })}
+            sx={{ background: "#FE5F1E", color: "white" }}
+          >
             В корзину
           </Button>
           <Button onClick={handleDelete} variant="contained" sx={{ background: "#FF0505", color: "white" }}>
